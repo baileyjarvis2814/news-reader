@@ -1,0 +1,33 @@
+{
+    "status": "ok",
+    "totalResults": 2,
+    "articles": [
+      {
+        "source": {
+          "id": null,
+          "name": "Electrek"
+        },
+        "author": "Fred Lambert",
+        "title": "I sold all my Tesla shares (TSLA), here’s why",
+        "description": "I fully divested from Tesla (TSLA), selling all my shares. I’m going to try to explain why. At Electrek, we like to be clear about our biases rather than claim we have none.",
+        "url": "http://electrek.co/2024/09/05/i-sold-all-my-tesla-shares-tsla-why/",
+        "urlToImage": "https://i0.wp.com/electrek.co/wp-content/uploads/sites/3/2016/03/img_1665-e1457955946161.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+        "publishedAt": "2024-09-05T16:25:04Z",
+        "content": "I fully divested from Tesla (TSLA), selling all my shares. I’m going to try to explain why. At Electrek, we like to be clear about our biases rather than claim we have none."
+      },
+      {
+        "source": {
+          "id": null,
+          "name": "Electrek"
+        },
+        "author": "Peter Johnson",
+        "title": "Ford F-150 Lightning sales surged 160% in August, but gas cars still dominate the total",
+        "description": "Ford announced Thursday that F-150 Lightning sales climbed 160% in August. Despite the surge, Ford’s gas-powered cars and trucks still accounted for 86% of sales last month.",
+        "url": "http://electrek.co/2024/09/05/ford-lightning-sales-surged-160-august-but-gas-cars-dominate/",
+        "urlToImage": "https://i0.wp.com/electrek.co/wp-content/uploads/sites/3/2024/07/lease-Ford-Lightning-Maverick-1.jpeg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+        "publishedAt": "2024-09-05T16:23:49Z",
+        "content": "Ford announced Thursday that F-150 Lightning sales climbed 160% in August. Despite the surge, Ford’s gas-powered cars and trucks still accounted for 86% of sales last month."
+      }
+    ]
+  }
+  
