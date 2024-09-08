@@ -1,21 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import ArticleList from '../components/ArticleList';
 import SearchBar from '../components/SearchBar';
-import mockData from '../mock/mockArticles.json'; // Will create this mock data file next
+import LoadingSpinner from '../components/LoadingSpinner';
+import { fetchArticles } from '../api/newsApi';
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Use mock data initially
   useEffect(() => {
-    setArticles(mockData.articles); // Adjust to use the 'articles' array from the mock data
-  }, []);
+    const loadArticles = async () => {
+      setLoading(true);
 
-  // Filter articles based on search term
+      const cachedArticles = localStorage.getItem('articles');
+
+      if (cachedArticles) {
+        setArticles(JSON.parse(cachedArticles));
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const data = await fetchArticles();
+        setArticles(data);
+
+        localStorage.setItem('articles', JSON.stringify(data));
+      } catch (error) {
+        setError('Failed to load articles. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadArticles();
+  }, []);
   const filteredArticles = articles.filter((article) =>
     article.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  if (loading) return <LoadingSpinner />;
+  if (error) return <div>{error}</div>;
 
   return (
     <div>
