@@ -12,18 +12,25 @@ const ArticleDetail = () => {
     const loadArticleDetails = async () => {
       setLoading(true);
 
-      const cachedArticles = localStorage.getItem('articles');
-      if (cachedArticles) {
-        const articles = JSON.parse(cachedArticles);
-        const selectedArticle = articles.find((article) => article.source.id === id || article.source.name === id);
+      try {
+        const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=4be2cca6e258406f96a6ac223ec374f9`);
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch articles');
+        }
+
+        const data = await response.json();
+        const selectedArticle = data.articles.find(
+          (article) => article.source.id === id || article.source.name === id
+        );
 
         if (selectedArticle) {
           setArticle(selectedArticle);
         } else {
           setError('Article not found');
         }
-      } else {
-        setError('No cached articles found. Please reload the homepage.');
+      } catch (error) {
+        setError('Failed to fetch articles. Please try again later.');
       }
 
       setLoading(false);
@@ -38,14 +45,18 @@ const ArticleDetail = () => {
   return (
     <div className="article-detail">
       <button onClick={() => navigate(-1)} className="back-button">Back</button>
-      <h1>{article.title}</h1>
-      <p>By {article.author}</p>
-      <img src={article.urlToImage} alt={article.title} />
-      <p>{new Date(article.publishedAt).toLocaleDateString()}</p>
-      <p>{article.content}</p>
-      <a href={article.url} target="_blank" rel="noopener noreferrer">
-        Read the full article at {article.source.name}
-      </a>
+      {article && (
+        <>
+          <h1>{article.title}</h1>
+          <p>By {article.author}</p>
+          <img src={article.urlToImage} alt={article.title} />
+          <p>{new Date(article.publishedAt).toLocaleDateString()}</p>
+          <p>{article.content}</p>
+          <a href={article.url} target="_blank" rel="noopener noreferrer">
+            Read the full article at {article.source.name}
+          </a>
+        </>
+      )}
     </div>
   );
 };

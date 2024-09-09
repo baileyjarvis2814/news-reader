@@ -14,19 +14,9 @@ const Home = () => {
     const loadArticles = async () => {
       setLoading(true);
 
-      const cachedArticles = localStorage.getItem('articles');
-
-      if (cachedArticles) {
-        setArticles(JSON.parse(cachedArticles));
-        setLoading(false);
-        return;
-      }
-
       try {
         const data = await fetchArticles();
         setArticles(data);
-
-        localStorage.setItem('articles', JSON.stringify(data));
       } catch (error) {
         setError('Failed to load articles. Please try again later.');
       } finally {
@@ -36,6 +26,7 @@ const Home = () => {
 
     loadArticles();
   }, []);
+
   const filteredArticles = articles.filter((article) =>
     article.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
