@@ -9,7 +9,6 @@ The **News Reader Application** is a front-end web application built with **Reac
 - **List of Articles**: Displays a list of news articles with their headline, image, description, and date.
 - **Detailed Article View**: Provides detailed information for each article, including title, author, source, publication date, content, and a link to the full article.
 - **Search Functionality**: Allows users to filter articles by keywords.
-- **Responsive Design**: Ensures the application works on desktop, tablet, and mobile devices.
 - **Error Handling**: Handles errors gracefully.
 - **End-to-End Testing**: Uses Cypress for automated testing to ensure robust functionality.
 
@@ -19,7 +18,6 @@ The **News Reader Application** is a front-end web application built with **Reac
 - **React Router**: For client-side routing.
 - **Fetch API**: For making network requests to the News API.
 - **Cypress**: For end-to-end testing.
-- **CSS**: For styling and responsive design.
 - **HTML5**: For structuring the application's user interface.
 
 ## Getting Started
